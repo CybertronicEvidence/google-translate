@@ -14,7 +14,9 @@ const App = () => {
   const [translatedText, setTranslatedText] = useState("");
 
   const getLanguages = async () => {
-    const response = await axios.get("http://localhost:8000/languages");
+    const response = await axios.get(
+      "https://google-translate-obqq.onrender.com/languages"
+    );
     setLanguages(response.data);
   };
   useEffect(() => {
@@ -28,9 +30,12 @@ const App = () => {
       outputLanguage,
       inputLanguage,
     };
-    const response = await axios.get("http://localhost:8000/translation", {
-      params: data,
-    });
+    const response = await axios.get(
+      "https://google-translate-obqq.onrender.com/translation",
+      {
+        params: data,
+      }
+    );
     console.log("response", response);
     setTranslatedText(response.data);
   };
